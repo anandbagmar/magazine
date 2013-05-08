@@ -1,0 +1,4 @@
+magazine
+========
+
+The Magazine
