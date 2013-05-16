@@ -25,8 +25,8 @@ And a live sale is published with automatic run assignment. Created can be impli
 
 The "before Preview Start Time" refers to a state that a sale exists in. Don't imply state, make it a first class part of your system. I'm not sure what this state is but it might be something like 'presale'. Here is a refactored version.
 
-    Given a Live Sale in 'presale'.
-    Then the admin can't suspend the Live Sale.
+    > Given a Live Sale in 'presale'.
+    > Then the admin can't suspend the Live Sale.
 
 Next.
     
@@ -46,8 +46,8 @@ This bit appears to be the setup for the following steps. I do notice however th
 
 Ok, now we can suspend the sale as it has started. So we should make this a separate test rather than a flow.
 
-    Given a Live Sale that is in progress
-    Then the admin can suspend the Live Sale.
+    > Given a Live Sale that is in progress
+    > Then the admin can suspend the Live Sale.
 
 Next.
 
@@ -64,11 +64,11 @@ It's also not clear why buyer_2 does not see get notified. I can't see any buyer
 
 I don't like to include implementation details in these tests and because of the implication that only currently online users will be notified of the Live Sale suspension, I will rewrite the behaviour.
 
-    Given a Live sale with 2 registered users.
-    When a Live Sale is suspended
-    Then all registered users are notified of the suspension
-    Then the auctioneer is notified of the suspension
-    Then the seller is notified of the suspension
+    > Given a Live sale with 2 registered users.
+    > When a Live Sale is suspended
+    > Then all registered users are notified of the suspension
+    > Then the auctioneer is notified of the suspension
+    > Then the seller is notified of the suspension
     
 We notify users of the suspension but no how they are notified.
 
@@ -88,14 +88,14 @@ Here we are testing for the absence of something. Do any users see the popup? If
     
 The Live Sale (should be an auction) starts with an initial bid. However it's not clear if we are testing that only an auctioneer can set the starting bid or, if setting the start bid starts the auction.
 
-    Given an auction that has not started
-    Then the auctioneer can start the auction.
+    > Given an auction that has not started
+    > Then the auctioneer can start the auction.
 
 Or,
 
-    Given an auction that has not started
-    When the auctioneer sets the starting bid
-    Then the auction has started.
+    > Given an auction that has not started
+    > When the auctioneer sets the starting bid
+    > Then the auction has started.
     
 The buyer_1 bids thing. Not sure. It could be setup for one of the next steps.
 
@@ -136,8 +136,8 @@ What is a listing? Is that the same as a Live Sale. Is a bid a listing? We're mi
 
 The real verification implies that sales can be suspended but only if it is in the No Sale state.
 
-    Given a No Sale auction
-    Then the admin can suspend the auction.
+    > Given a No Sale auction
+    > Then the admin can suspend the auction.
 
 ### Admin cannot suspend the Live Sale after the auctioneer has ended it
     When auctioneer ends Live Sale after all listings have run
@@ -145,5 +145,5 @@ The real verification implies that sales can be suspended but only if it is in t
     
 Ok, so listings are back and they can run. But it seems the important thing here is that the auctioneer ends the Live Sale after the listings have run. Not that having the listenings finishing running automatically ends the auction. Therefore listings are not important.
 
-    Given an completed auction
-    Then the admin can't suspend the Live Sale.
+    > Given an completed auction
+    > Then the admin can't suspend the Live Sale.
