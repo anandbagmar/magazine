@@ -23,7 +23,7 @@ GEM
       posix-spawn (~> 0.3.6)
     mime-types (1.23)
     mustache (0.99.4)
-    nokogiri (1.5.9)
+    nokogiri (1.8.1)
     posix-spawn (0.3.6)
     pygments.rb (0.4.2)
       posix-spawn (~> 0.3.6)
